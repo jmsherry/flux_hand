@@ -1,6 +1,10 @@
-var keyMirror = require('keymirror');
+import keyMirror from 'keymirror';
 
-module.exports = keyMirror({
+const CounterConstants = keyMirror({
   INCREMENT: null,
-  DECREMENT: null,
+  DECREMENT: null
 });
+
+CounterConstants.CHANGE_EVENT = 'change';
+
+export default CounterConstants;

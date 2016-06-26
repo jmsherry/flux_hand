@@ -1,20 +1,18 @@
 import React,{Component} from 'react';
-import Dispatcher from './../dispatcher/dispatcher.js';
+import ReactDOM from 'react-dom';
+import CounterConstants from './../constants/constants';
+import AppDispatcher from './../Dispatcher/AppDispatcher.js';
+import Controls from './Controls';
+import Display from './Display';
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {total: 0};
-  }
   render(){
-    console.log(this);
-    let { total } = this.state;
     return (
       <div className="counter">
         <h1>My counter</h1>
-        <p>Total: {total}</p>
-        <button>+</button>
-        <button>-</button>
+        <Display />
+        <Display />
+        <Controls />
       </div>
     )
   }
