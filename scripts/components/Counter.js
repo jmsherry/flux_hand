@@ -11,7 +11,6 @@ class Counter extends Component {
       <div className="counter">
         <h1>My counter</h1>
         <Display />
-        <Display />
         <Controls />
       </div>
     )

@@ -1,11 +1,14 @@
-import React,{Component} from 'react';
+import React, {
+  Component
+} from 'react';
 import CounterConstants from './../constants/constants';
 import CounterStore from './../stores/CounterStore';
 
 // Method to retrieve application state from store
 function getAppState() {
+  console.log('getting app state...');
   return {
-    total: CounterStore.getCount()
+    count: CounterStore.getCount()
   };
 }
 
@@ -14,28 +17,36 @@ class Counter extends Component {
     super(props);
     this.state = getAppState();
   }
-  // Listen for changes
-componentDidMount() {
-  CounterStore.addChangeListener(this._onChange);
-}
-
-// Unbind change listener
-componentWillUnmount() {
-  CounterStore.removeChangeListener(this._onChange);
-}
 
   // Update view state when change event is received
   _onChange() {
-    const that = this;
-    console.log('_onChange', that);
+    console.log('prechange', this.state);
     const newState = getAppState();
-    (newState) => this.setState;
+    console.log('newState', newState);
+    (newState) => this.replaceState;
   }
 
-  render(){
+  // Listen for changes
+  componentDidMount() {
+    CounterStore.addChangeListener(this._onChange.bind(this));
+  }
+
+  // Unbind change listener
+  componentWillUnmount() {
+    CounterStore.removeChangeListener(this._onChange.bind(this));
+  }
+
+  shouldComponentUpdate( newProps, newState ) {
+    console.log('shouldComponentUpdate', arguments);
+  }
+
+  render() {
+    let count = getAppState().count;
+    console.log('rendering', count, this.state);
     return (
-      <div className="display">
-        <p>Total: {this.state.total}</p>
+      <div className = "display" >
+        <p>State: { this.state.count }</p>
+        <p>count: { count }</p>
       </div>
     )
   }
