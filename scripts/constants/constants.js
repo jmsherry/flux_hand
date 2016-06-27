@@ -1,8 +1,8 @@
 import keyMirror from 'keymirror';
 
 const CounterConstants = keyMirror({
-  INCREMENT: null,
-  DECREMENT: null
+  ADD_TODO: null,
+  REMOVE_TODO: null
 });
 
 CounterConstants.CHANGE_EVENT = 'change';

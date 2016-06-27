@@ -7,7 +7,7 @@ class Counter extends Component {
   render(){
     return (
       <div className="counter">
-        <h1>My counter</h1>
+        <h1>My Todos</h1>
         <Display />
         <Controls />
       </div>

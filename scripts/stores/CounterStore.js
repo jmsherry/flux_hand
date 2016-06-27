@@ -4,20 +4,21 @@ import CounterConstants from '../constants/constants';
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 
-let _count = 5; // collection of todo items
+let _todos = []; // collection of todo items
 
-function increment() {
-  _count +=1;
+function addTodo(todo) {
+  _todos.push(todo);
 }
 
-function decrement() {
-  _count -=1;
+function removeTodo(i) {
+  console.log('removing', i);
+   _todos.splice(i, 1)
 }
 
 let CounterStore = assign({}, EventEmitter.prototype, {
 
-  getCount() {
-    return _count;
+  getTodos() {
+    return _todos;
   },
 
   emitChange() {
@@ -40,21 +41,20 @@ let CounterStore = assign({}, EventEmitter.prototype, {
 
   dispatcherIndex: AppDispatcher.register(function(payload) {
     console.log('blah', arguments);
-    var action = payload.action;
-    var text;
+    let action = payload.action;
 
     switch(action.actionType) {
-      case CounterConstants.INCREMENT:
-          console.log('inc', _count);
-          increment();
-          console.log(_count);
+      case CounterConstants.ADD_TODO:
+          console.log('add', _todos);
+          addTodo(action.todo);
+          console.log(_todos);
           CounterStore.emitChange();
         break;
 
-      case CounterConstants.DECREMENT:
-      console.log('dec', _count);
-        decrement();
-        console.log(_count);
+      case CounterConstants.REMOVE_TODO:
+      console.log('remove', _todos);
+        removeTodo(action.index);
+        console.log(_todos);
         CounterStore.emitChange();
         break;
     }

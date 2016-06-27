@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import CounterConstants from './../constants/constants';
 import CounterStore from './../stores/CounterStore';
+import Todo from './todo';
 
 // Method to retrieve application state from store
 function getAppState() {
   console.log('getting app state...');
   return {
-    count: CounterStore.getCount()
+    todos: CounterStore.getTodos()
   };
 }
 
@@ -32,14 +33,14 @@ class Display extends Component {
     CounterStore.removeChangeListener(this._onChange.bind(this));
   }
 
-  // shouldComponentUpdate( newProps, newState ) {
-  //   console.log('shouldComponentUpdate', arguments);
-  // }
-
   render() {
+    const todos = getAppState().todos.map((todo, i) => {
+      return <Todo todo={todo} index={i} key={i} />
+    });
     return (
       <div className = "display" >
-        <p>State: { this.state.count }</p>
+        <p>Todos:</p>
+        <ul>{todos}</ul>
       </div>
     )
   }

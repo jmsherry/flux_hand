@@ -3,15 +3,17 @@ import CounterConstants from '../constants/constants';
 
 const CounterActions = {
 
-  increment() {
+  addTodo(todo) {
     AppDispatcher.handleViewAction({
-      actionType: CounterConstants.INCREMENT
+      actionType: CounterConstants.ADD_TODO,
+      todo
     });
   },
 
-  decrement() {
+  removeTodo(index) {
     AppDispatcher.handleViewAction({
-      actionType: CounterConstants.DECREMENT
+      actionType: CounterConstants.REMOVE_TODO,
+      index
     });
   }
 
