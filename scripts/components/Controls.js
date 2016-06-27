@@ -1,17 +1,19 @@
 import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 import CounterConstants from './../constants/constants';
 import AppDispatcher from './../dispatcher/AppDispatcher';
+import CounterActions from './../actions/actions';
 
-class Counter extends Component {
+class Controls extends Component {
   render(){
     console.log('here', AppDispatcher);
     return (
       <div className="controls">
-        <button onClick={() => AppDispatcher.handleViewAction( {actionType: CounterConstants.INCREMENT})}>+</button>
-        <button onClick={() => AppDispatcher.handleViewAction( {actionType: CounterConstants.DECREMENT})}>-</button>
+        <button onClick={CounterActions.increment}>+</button>
+        <button onClick={CounterActions.decrement}>-</button>
       </div>
     )
   }
 }
 
-export default Counter;
+export default Controls;

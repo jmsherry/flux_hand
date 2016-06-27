@@ -1,6 +1,5 @@
-import React, {
-  Component
-} from 'react';
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 import CounterConstants from './../constants/constants';
 import CounterStore from './../stores/CounterStore';
 
@@ -12,7 +11,7 @@ function getAppState() {
   };
 }
 
-class Counter extends Component {
+class Display extends Component {
   constructor(props) {
     super(props);
     this.state = getAppState();
@@ -52,4 +51,4 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+export default Display;

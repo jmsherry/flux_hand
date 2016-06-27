@@ -1,11 +1,8 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-var CounterConstants = require('../constants/constants');
+import CounterConstants from '../constants/constants';
 
 const CounterActions = {
 
-  /**
-   * @param  {string} text
-   */
   increment() {
     AppDispatcher.handleViewAction({
       actionType: CounterConstants.INCREMENT
@@ -14,7 +11,7 @@ const CounterActions = {
 
   decrement() {
     AppDispatcher.handleViewAction({
-      actionType: TodoConstants.DECREMENT
+      actionType: CounterConstants.DECREMENT
     });
   }
 
