@@ -4,8 +4,6 @@ import CounterConstants from '../constants/constants';
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 
-console.log(' Dispatcher',  Dispatcher);
-console.log(' AppDispatcher',  AppDispatcher);
 let _count = 5; // collection of todo items
 
 function increment() {
