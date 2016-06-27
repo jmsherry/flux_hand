@@ -19,10 +19,7 @@ class Display extends Component {
 
   // Update view state when change event is received
   _onChange() {
-    console.log('prechange', this.state);
-    const newState = getAppState();
-    console.log('newState', newState);
-    (newState) => this.replaceState;
+     this.setState(getAppState());
   }
 
   // Listen for changes
@@ -35,17 +32,14 @@ class Display extends Component {
     CounterStore.removeChangeListener(this._onChange.bind(this));
   }
 
-  shouldComponentUpdate( newProps, newState ) {
-    console.log('shouldComponentUpdate', arguments);
-  }
+  // shouldComponentUpdate( newProps, newState ) {
+  //   console.log('shouldComponentUpdate', arguments);
+  // }
 
   render() {
-    let count = getAppState().count;
-    console.log('rendering', count, this.state);
     return (
       <div className = "display" >
         <p>State: { this.state.count }</p>
-        <p>count: { count }</p>
       </div>
     )
   }
